@@ -1,0 +1,130 @@
+html {
+    height: 100%;
+    width: 100%;
+}
+
+@font-face {
+    font-family: 'oliv';
+    src: url(/fonts/olivetti.otf);
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    background-color: #d8b565;
+    overflow-x: auto;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border: 0;
+    font-family: oliv;
+    overflow-y: auto;
+}
+
+#__nuxt {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border: 0;
+    overflow: auto;
+}
+
+.coming-soon {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+p {
+    font-size: 1rem;
+}
+
+.hyperlink {
+    color: #669be5;
+    font-style: italic;
+    text-decoration: underline;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.hyperlink--non-italic {
+    color: #669be5;
+    cursor: pointer;
+    width: fit-content;
+    text-decoration: none;
+}
+
+.hyperlink--non-italic:hover {
+    text-decoration: underline;
+}
+  
+.hyperlink:hover {
+    text-decoration: underline;
+}
+
+#page {
+  width: 100%;
+  height: calc(100% - 64px);
+  position:absolute;
+  display: flex;
+  align-items: center;
+    justify-content: center;
+}
+
+#page.non-scroll {
+  overflow: hidden;
+}
+
+.nav {
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.nav.active {
+  opacity: 1;
+}
+
+.page-enter-active,
+.page-leave-active {
+  transition: all ease-in-out .4s;
+}
+
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+}
+
+.slide-enter-active, .poo-leave-active {
+  transition: all ease-in-out .4s;
+}
+
+.slide-enter-from, .poo-leave-to {
+  opacity: 0;
+  transform: translateY(-100%);
+  position: absolute;
+  width: 100%;
+  z-index: 100;
+}
+
+@media(min-width: 850px) {
+    .hyperlink {
+        text-decoration: none;
+    }
+    .cheeky {
+        right: 15%;
+    }
+}
+
+@media(max-width: 850px) {
+    .hyperlink--non-italic {
+        text-decoration: underline;
+    }
+}
+
+
+
