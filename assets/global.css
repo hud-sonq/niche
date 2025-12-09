@@ -91,7 +91,7 @@ p {
 
 .page-enter-active,
 .page-leave-active {
-  transition: all ease-in-out .4s;
+  transition: all ease-in-out .64s;
 }
 
 .page-enter-from,
@@ -126,5 +126,131 @@ p {
     }
 }
 
+.start-hidden {
+  opacity: 0;
+}
 
+/* Base fade item settings */
+.fade-item {
+  transition: opacity 3000ms cubic-bezier(.22,.9,.34,1);
+  will-change: opacity;
+}
+
+/* Active fade state */
+.fade-item.visible {
+  opacity: 1;
+}
+
+/* Layout */
+#niche-png-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50%;
+}
+
+#niche-png-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+#niche-png-itself {
+  max-width: 300px;
+}
+
+#texts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 8px;
+}
+
+.cheeky-wrap {
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+}
+
+/* Both images occupy same layout space and stack */
+.cheeky-img {
+  display: block;
+  position: absolute;
+  width: auto;
+  height: 100px;
+  transform-origin: center;
+  /* same rotation animation on both images so they tilt together */
+  animation: cheeky-bob 2s steps(1, end) infinite;
+  /* make opacity animated separately via own animation */
+  will-change: opacity, transform;
+}
+
+/* clink image will be visible only in tilted half (0% - 50%) */
+.cheeky-img.clink {
+  animation-name: cheeky-bob, clink-opacity;
+  animation-duration: 2s, 2s;
+  animation-timing-function: steps(1, end), steps(1, end);
+  animation-iteration-count: infinite, infinite;
+  animation-fill-mode: both, both;
+  /* Ensure it sits above base */
+  z-index: 2;
+}
+
+/* base image visible in upright half (50% - 100%) */
+.cheeky-img#cheeky-img-base {
+  animation-name: cheeky-bob, base-opacity;
+  animation-duration: 2s, 2s;
+  animation-timing-function: steps(1, end), steps(1, end);
+  animation-iteration-count: infinite, infinite;
+  animation-fill-mode: both, both;
+  z-index: 1;
+}
+
+/* opacity keyframes aligned to the same steps so no drift */
+@keyframes clink-opacity {
+  0%   { opacity: 1; }   /* tilted visible */
+  49%  { opacity: 1; }
+  50%  { opacity: 0; }   /* then hidden when upright */
+  100% { opacity: 0; }
+}
+
+@keyframes base-opacity {
+  0%   { opacity: 0; }   /* base hidden when tilted */
+  49%  { opacity: 0; }
+  50%  { opacity: 1; }   /* visible when upright */
+  100% { opacity: 1; }
+}
+
+/* keep your rotation animation unchanged (applied via cheeky-bob) */
+@keyframes cheeky-bob {
+  0%   { transform: rotate(-9deg); }
+  1%   { transform: rotate(-25deg); }
+  50%  { transform: rotate(-25deg); }
+  51%  { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
+}
+
+#cheeky-span { 
+  animation: cheeky-fade 2s steps(1, end) infinite; 
+  transform: rotate(22deg); right: 35%; 
+} 
+
+@keyframes cheeky-fade { 
+  0% { opacity: 1; } 49% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 0; } 
+}
+
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .fade-item,
+  .fade-item.visible,
+  .start-hidden {
+    transition: none !important;
+    opacity: 1 !important;
+  }
+}
 
