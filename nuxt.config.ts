@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   css: ['~/assets/global.css'],
   ssr: false,
   app: {
-    baseURL: process.env.NUXT_PUBLIC_BASE_URL || '/niche',
+    baseURL: '/',
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {
       link: [
