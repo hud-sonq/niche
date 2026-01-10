@@ -1,9 +1,9 @@
 <template>
     <div>
         <div style="text-align: center;">
-            <h3 style="font-size: 30px; transform: rotate(-8deg);">Tennessee's First Wine Window</h3>
-            <h3>123 E main st</h3>
-            <h3>123-456-7890</h3>
+            <h3 style="font-size: 30px;">Tennessee's First Wine Window</h3>
+            <h3>400 E main st</h3>
+            <!-- <h3>123-456-7890</h3> -->
             <div>
                 <a href="mailto:admin@niche.com" style="text-decoration: underline; text-align: center; color: black; cursor: pointer; display: flex; flex-direction: row; align-items: center; justify-content: center;">
                 Email us <img src="/icons/LsiconOpenNewFilled.svg" alt="Email Icon" style="height: 32px;"/>
